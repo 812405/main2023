@@ -14,8 +14,8 @@ public class VKBControl implements Control {
     private final CommandJoystick m_controller;
     private Rotation2d previousRotation = new Rotation2d(0);
     private double ticks = 0;
-    private final double kTicksToDegrees = 0;
-    private final double kTicksToRadians = 0;
+    private final double kDegreesPerTick = 0;
+    private final double kRadiansPerTick = 0;
 
     public static class Config {
         public static int kTriggerSoftChannel = 0;
@@ -64,11 +64,11 @@ public class VKBControl implements Control {
     }
 
     public double getEn1Radians() {
-        return MathUtil.angleModulus(ticks * kTicksToRadians);
+        return MathUtil.angleModulus(ticks * kRadiansPerTick);
     }
 
     public double getEn1Degrees() {
-        return ticks * kTicksToDegrees - 360 * Math.floor(ticks * kTicksToDegrees / 360);
+        return ticks * kDegreesPerTick - 360 * Math.floor(ticks * kDegreesPerTick / 360);
     }
 
     @Override
