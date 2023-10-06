@@ -145,7 +145,7 @@ public class Autonomous extends SequentialCommandGroup {
                 // new ParallelDeadlineGroup(new WaitCommand(0.2), new Intake(m_manipulator, m_arm)),
                 // new ParallelDeadlineGroup(new WaitCommand(2), new ArmTrajectory(ArmPosition.SAFE, m_arm, false)),
                 // new DriveMobility(robotDrive)
-                new ParallelDeadlineGroup(new WaitCommand(2.5' hb    hFM,AFxfFCFF),  new DriveWithHeading( () -> new Twist2d(2, 0.02, 0.0), m_robotDrive, m_heading, () -> SpeedLimitsFactory.getSpeedLimits(SpeedLimit.Medium), new Timer(), rotSupplier ))
+                new ParallelDeadlineGroup(new WaitCommand(2.5),  new DriveWithHeading( () -> new Twist2d(2, 0.02, 0.0), m_robotDrive, m_heading, () -> SpeedLimitsFactory.getSpeedLimits(SpeedLimit.Medium), new Timer(), rotSupplier ))
                
                 
     
