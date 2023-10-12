@@ -94,7 +94,7 @@ public class RobotContainer implements Sendable {
         //
         //////////////////////////////////////
 
-        public double kDriveCurrentLimit = SHOW_MODE ? 20 : 60;
+        public double kDriveCurrentLimit = SHOW_MODE ? 20 : 50;
 
         public boolean useSetpointGenerator = false;
 
@@ -318,11 +318,11 @@ public class RobotContainer implements Sendable {
         // DRIVE
 
         // if (m_config.SHOW_MODE) {
-            m_robotDrive.setDefaultCommand(
-                    new DriveScaled(
-                            control::twist,
-                            m_robotDrive,
-                            m_config::getSpeedLimit));  
+            // m_robotDrive.setDefaultCommand(
+            //         new DriveScaled(
+            //                 control::twist,
+            //                 m_robotDrive,
+            //                 m_config::getSpeedLimit));  
         // } else {
         //     // if (m_config.useSetpointGenerator) {
         //     //     m_robotDrive.setDefaultCommand(
@@ -331,14 +331,14 @@ public class RobotContainer implements Sendable {
         //     //                     m_robotDrive,
         //     //                     m_config::getSpeedLimit));
         //     // } else {
-        //         m_robotDrive.setDefaultCommand(
-        //                 new DriveWithHeading(
-        //                         control::twist,
-        //                         m_robotDrive,
-        //                         m_heading,
-        //                         m_config::getSpeedLimit,
-        //                         new Timer(),
-        //                         control::desiredRotation));
+                m_robotDrive.setDefaultCommand(
+                        new DriveWithHeading(
+                                control::twist,
+                                m_robotDrive,
+                                m_heading,
+                                m_config::getSpeedLimit,
+                                new Timer(),
+                                control::desiredRotation));
             
         // }
 
@@ -427,6 +427,10 @@ public class RobotContainer implements Sendable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void setCurrentPose(){
+        m_robotDrive.truncate();
     }
 
     private DriveToAprilTag toTag(

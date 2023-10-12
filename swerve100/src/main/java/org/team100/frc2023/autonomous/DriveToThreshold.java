@@ -31,8 +31,8 @@ public class DriveToThreshold extends Command {
 
     @Override
     public void execute() {
-        if (m_robotDrive.getPose().getX() > 2.5) { //3.175
-            Twist2d fieldRelative = new Twist2d(m_config.kXSpeedM_S, 0, 0);
+        if (m_robotDrive.getPose().getX() > 2.4) { //3.175
+            Twist2d fieldRelative = new Twist2d(m_config.kXSpeedM_S, 0, -.05);
 
             Pose2d currentPose = m_robotDrive.getPose();
             SwerveState manualState = SwerveDriveSubsystem.incremental(currentPose, fieldRelative);

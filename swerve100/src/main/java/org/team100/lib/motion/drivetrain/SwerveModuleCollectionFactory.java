@@ -26,25 +26,25 @@ public class SwerveModuleCollectionFactory {
                                 11, // drive CAN
                                 30, // turn CAN
                                 0, // turn encoder
-                                0.705062), // turn offset
+                                0.703736), // turn offset
                         m_moduleFactory.WCPModule(
                                 "Front Right",
                                 12, // drive CAN
                                 32, // turn CAN
                                 1, // turn encoder
-                                0.664195), // turn offset
+                                0.657817), // turn offset
                         m_moduleFactory.WCPModule(
                                 "Rear Left",
                                 21, // drive CAN
                                 31, // turn CAN
                                 2, // turn encoder
-                                0.400516), // turn offset
+                                0.389366), // turn offset
                         m_moduleFactory.WCPModule(
                                 "Rear Right",
                                 22, // drive CAN
                                 33, // turn CAN
                                 3, // turn encoder
-                                0.107249)); // turn offset
+                                0.108658)); // turn offset
             case SWERVE_TWO:
                 return new SwerveModuleCollection(
                         m_moduleFactory.AMModule(

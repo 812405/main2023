@@ -57,11 +57,14 @@ public class Robot extends TimedRobot {
 
     @Override
     public void autonomousInit() {
+        m_robotContainer.setCurrentPose();
         m_robotContainer.scheduleAuton();
     }
 
     @Override
     public void teleopInit() {
+        m_robotContainer.setCurrentPose();
+
         m_robotContainer.cancelAuton();
 
     }

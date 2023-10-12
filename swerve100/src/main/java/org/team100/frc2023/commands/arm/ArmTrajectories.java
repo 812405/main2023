@@ -24,19 +24,19 @@ public class ArmTrajectories {
         public ArmAngles highGoalCone = new ArmAngles(0.475557, 1.116505);
         public ArmAngles midGoalCone = new ArmAngles(0.138339, 1.609977);
         public ArmAngles lowGoalCone = new ArmAngles(0, 2.21);
-        public ArmAngles subCone = new ArmAngles(-0.356975, 1.292874);
+        public ArmAngles subCone = new ArmAngles(-0.356975, 1.338969);
 
         // Cube
         public ArmAngles highGoalCube = new ArmAngles(0.475557, 1.116505);
         public ArmAngles midGoalCube = new ArmAngles(0.089803, 1.681915);
         public ArmAngles lowGoalCube = new ArmAngles(-0.049849, 2.271662);
-        public ArmAngles subCube = new ArmAngles(-0.356975, 1.355187);
+        public ArmAngles subCube = new ArmAngles(-0.330036, 1.419783);
 
         public ArmAngles subToCube = new ArmAngles(-0.356975, 1.355187);
 
         public ArmAngles safeBack = new ArmAngles(-0.55, 1.97);
-        public ArmAngles safeGoalCone = new ArmAngles(-0.639248, 1.838205);
-        public ArmAngles safeGoalCube = new ArmAngles(-0.639248, 1.838205);
+        public ArmAngles safeGoalCone = new ArmAngles(-0.639248, 1.775181);
+        public ArmAngles safeGoalCube = new ArmAngles(-0.639248, 1.775181);
         public ArmAngles safeWaypoint = new ArmAngles(-0.394089, 1.226285);
     }
 

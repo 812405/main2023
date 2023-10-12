@@ -22,11 +22,14 @@ public class ArmTrajectory extends Command {
         public TrajectoryConfig safeTrajectory = new TrajectoryConfig(9, 3.5);
         public TrajectoryConfig normalTrajectory = new TrajectoryConfig(5, 2.5);
         public TrajectoryConfig subTrajectory = new TrajectoryConfig(6, 5.5);
+        public TrajectoryConfig midTrajectory = new TrajectoryConfig(2, 0.5);
 
         public TrajectoryConfig oscillateTrajectory = new TrajectoryConfig(5, 2);
         public TrajectoryConfig autoTrajectory = new TrajectoryConfig(9, 1.5);
 
     }
+
+    private static ArmPosition lastPosition = ArmPosition.AUTO;
 
     private final Config m_config = new Config();
     private final ArmInterface m_arm;
@@ -38,6 +41,7 @@ public class ArmTrajectory extends Command {
     private final DoublePublisher measurmentY;
     private final DoublePublisher setpointUpper;
     private final DoublePublisher setpointLower;
+    private final boolean goingDown = false;
 
     private Trajectory m_trajectory;
 
@@ -54,7 +58,7 @@ public class ArmTrajectory extends Command {
         measurmentY = inst.getTable("Arm Trajec").getDoubleTopic("measurmentY").publish();
         setpointUpper = inst.getTable("Arm Trajec").getDoubleTopic("Setpoint Upper").publish();
         setpointLower = inst.getTable("Arm Trajec").getDoubleTopic("Setpoint Lower").publish();
-
+        // lastPosition = inst.getTable("Arm Trajec")
         addRequirements(m_arm.subsystem());
     }
 
@@ -71,7 +75,9 @@ public class ArmTrajectory extends Command {
             
         // }else
 
-        final TrajectoryConfig trajectoryConfig;
+        TrajectoryConfig trajectoryConfig;
+
+        
 
         
         if (m_position == ArmPosition.SAFE) {
@@ -85,10 +91,16 @@ public class ArmTrajectory extends Command {
             trajectoryConfig = m_config.normalTrajectory;
             m_arm.setControlNormal();
         } 
+
+        if(lastPosition == ArmPosition.MID){
+            trajectoryConfig = m_config.midTrajectory;
+        }
         m_trajectory = new ArmTrajectories(trajectoryConfig).makeTrajectory(
                 m_arm.getMeasurement(),
                 m_position,
                 m_arm.getCubeMode());
+        
+        lastPosition = m_position;
     }
 
     public void execute() {
@@ -112,6 +124,13 @@ public class ArmTrajectory extends Command {
             m_arm.setControlOscillate();
             desiredUpper += oscillator(curTime);
         }
+
+        // if(currentUpper < 1.29){
+        //     m_arm.setReference(new ArmAngles(currentLower, 1.29));
+        // } else if(currentUpper > 1.29 ){
+        //     m_arm.setReference(new ArmAngles(currentLower, 1.29));
+
+        // }
 
         ArmAngles reference = new ArmAngles(desiredLower, desiredUpper);
 

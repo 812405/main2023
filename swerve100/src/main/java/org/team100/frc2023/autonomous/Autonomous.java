@@ -8,6 +8,7 @@ import org.team100.frc2023.commands.DriveWithHeading;
 import org.team100.frc2023.commands.WheelsForward;
 import org.team100.frc2023.commands.arm.ArmTrajectory;
 import org.team100.frc2023.commands.arm.SetCubeMode;
+import org.team100.frc2023.commands.manipulator.Eject;
 import org.team100.frc2023.commands.manipulator.Intake;
 import org.team100.frc2023.subsystems.ManipulatorInterface;
 import org.team100.frc2023.subsystems.arm.ArmInterface;
@@ -109,12 +110,12 @@ public class Autonomous extends SequentialCommandGroup {
                 new SetCubeMode(m_arm, m_indicator),
                 new ParallelDeadlineGroup(new WaitCommand(2), new ArmTrajectory(ArmPosition.AUTO, m_arm, false)),
                    
-                new ParallelDeadlineGroup(new WaitCommand(0.2), new Intake(m_manipulator, m_arm)),
+                new ParallelDeadlineGroup(new WaitCommand(0.2), new Eject(m_manipulator, m_arm)),
                 new ParallelDeadlineGroup(new WaitCommand(2), new ArmTrajectory(ArmPosition.SAFE, m_arm, false)),
     
                 new DriveMobility(robotDrive),
                 // timeout(new DriveStop(m_robotDrive, m_heading), 2),
-                new ParallelDeadlineGroup(new WaitCommand(1), new DriveStop(robotDrive, m_heading)),
+                new ParallelDeadlineGroup(new WaitCommand(0.5), new DriveStop(robotDrive, m_heading)),
     
                 new DriveToThreshold(m_robotDrive),
     

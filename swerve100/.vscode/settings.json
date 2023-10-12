@@ -33,5 +33,6 @@
 "files.autoSave": "afterDelay",
 "editor.tabSize": 4,
 "editor.insertSpaces": true,
-"editor.indentSize": "tabSize"
+"editor.indentSize": "tabSize",
+"wpilib.autoStartRioLog": true
 }

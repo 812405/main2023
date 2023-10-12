@@ -119,7 +119,7 @@ public class DualXboxControl implements Control, Sendable {
                     rotationMultiplier = 0.5;
                 } else {
                     translateMultipler = 1;          
-                    rotationMultiplier = 1;
+                    rotationMultiplier = 2;
                 }
             }
         };

@@ -32,7 +32,7 @@ public class SpeedLimitsFactory {
 
         switch(limit){
             case Fast:
-                return new SpeedLimits(5, 10, 5, 5);
+                return new SpeedLimits(5, 10, 10, 15);
             case Medium:
                 return new SpeedLimits(2, 10, 0.4, 5);
             case Slow:

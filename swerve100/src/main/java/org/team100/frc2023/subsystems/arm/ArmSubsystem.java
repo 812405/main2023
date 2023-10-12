@@ -341,13 +341,19 @@ public class ArmSubsystem extends Subsystem implements ArmInterface {
 
     /** Lower arm angle (in radians) 0 up, positive forward. */
     private double getLowerArm() {
-        double x = (lowerArmEncoder.getAbsolutePosition() - 0.861614) * 360;
+
+        //0.855792
+
+        //0.860895
+        double x = (lowerArmEncoder.getAbsolutePosition() - 0.860895) * 360;
         return (-1.0 * x) * Math.PI / 180;
     }
 
     /** Upper arm angle (radians), 0 up, positive forward. */
     private double getUpperArm() {
-        double x = (upperArmEncoder.getAbsolutePosition() - 0.280187) * 360;
+
+        //0.279704
+        double x = (upperArmEncoder.getAbsolutePosition() - 0.265836) * 360;
         return x * Math.PI / 180;
     }
 

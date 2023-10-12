@@ -67,6 +67,16 @@ public class SwerveDriveSubsystem extends Subsystem implements SwerveDriveSubsys
                 new State100(currentPose.getRotation().getRadians(), 0, 0));
     }
 
+    /** Set desired states to current states and stop. */
+    public void truncateTest() {
+        stop();
+        Pose2d currentPose = getPose();
+        m_desiredState = new SwerveState(
+                new State100(currentPose.getX(), 0, 0),
+                new State100(currentPose.getY(), 0, 0),
+                new State100(359 * Math.PI / 180, 0, 0));
+    }
+
     /** Drive to the desired reference. */
     @Override
     public void periodic() {
@@ -215,7 +225,9 @@ public class SwerveDriveSubsystem extends Subsystem implements SwerveDriveSubsys
 
     public void resetPose(Pose2d robotPose) {
         m_poseEstimator.resetPosition(m_heading.getHeadingNWU(), m_swerveLocal.positions(), robotPose);
+        System.out.println("AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH" + getPose());
         truncate();
+
     }
 
     ///////////////////////////////

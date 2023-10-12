@@ -18,7 +18,7 @@ public class AutoLevel extends Command {
         public double kMaxRot = 2;
         public double kCruiseSpeed = 1.5;
         /** max speed as a fraction */
-        public double kSpeedClamp1_1 = 0.09;
+        public double kSpeedClamp1_1 = 0.11; //0.09
         // TODO: is this unit correct?
         // public double kSpeedPerDegree = 0.005;
         public double kSpeedPerDegree = 0.009;
@@ -99,7 +99,7 @@ public class AutoLevel extends Command {
             //     m_robotDrive.setDesiredState(manualState);
             // }
 
-            if (m_robotDrive.getPose().getX() >= 2.5) {
+            if (m_robotDrive.getPose().getX() >= 1.8) { //2.5
                 if (Math.abs(Roll) > 2.5 || Math.abs(Pitch) > 2.5) {
                     count = 0;
 
